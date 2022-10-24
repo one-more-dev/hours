@@ -40,7 +40,7 @@ def calculaDias(d=None):
 
 
 print("\nNow, considering the weekdays as follow: Monday = 0, Tuesday = 1, Wednesday = 2, Thursday = 3, Friday = 4,\
-Saturday = 5 and Sunday = 6./nWould you like to exclude some weekday(s) or period from your counting?\n\n")
+Saturday = 5 and Sunday = 6.\nWould you like to exclude some weekday(s) or period from your counting?\n\n")
 
 def excluirDias():
     print("Empty insertings will be the same as not excluding dates\n")
@@ -50,24 +50,30 @@ def excluirDias():
         excluirS = excluirS.split(",")
         p = periodo[1]
         for dias in range(periodo[0].days):
-            p += dt.timedelta(days=1) 
+            p += dt.timedelta(days=1)
             if (str(p.weekday()) in excluirS):
                 diasTotais += 1
-        calculaDias(diasTotais)
+        return diasTotais
+    else:
+        return 0
+        
 
 
 def excluirPeriodo():
     print("If you wish to exclude a full period, press Y/y to continue.")
     prosseguir = input("")
     if(prosseguir == 'Y' or prosseguir == 'y'):
-        excluirP = periodoDeContagem("If you wish to exclude a period, insert it's start: ","And it's end: ")
-        calculaDias(excluirP[0].days)
+        excluirP = periodoDeContagem("Insert it's start: ","And it's end: ")
+        return excluirP[0].days
+    else:
+        return 0
 
 
-excluirDias()
-excluirPeriodo()
+e1 = excluirDias()
+e2 = excluirPeriodo()
+p = periodo[0].days
 
-horasTotais = calculaDias()*(tempo/60)
+horasTotais = (p-(e1+e2))*(tempo/60)
 print(f"\nThe total amount of hours is {horasTotais}")
 
 #   ERROR TREATMENT
