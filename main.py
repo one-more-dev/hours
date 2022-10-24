@@ -32,12 +32,6 @@ periodo = periodoDeContagem("Starting date: ","Ending date: ")
 tempo = int(input("Time per day (in minutes): "))
 
 
-def calculaDias(d=None):
-    if(d == None):
-        return periodo[0].days
-    else:
-        return periodo[0].days - d
-
 
 print("\nNow, considering the weekdays as follow: Monday = 0, Tuesday = 1, Wednesday = 2, Thursday = 3, Friday = 4,\
 Saturday = 5 and Sunday = 6.\nWould you like to exclude some weekday(s) or period from your counting?\n\n")
